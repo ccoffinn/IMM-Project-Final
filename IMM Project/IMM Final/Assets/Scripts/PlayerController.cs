@@ -9,20 +9,29 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float horizontalInput;
-    public float speed = 10.0f;
+    private float horizontalInput;
+    private float speed = 10.0f;
     private float zRange = 10;
     private float xRange = -20;
-    public float cooldown;
+    private float cooldown;
     private Vector3 offset = new Vector3(1,0,0);
     public GameManager gameManager;
     public bool isPowerUp = false;
+    // player audio
+    private AudioSource playerAudio;
 
     // declared in unity
     public GameObject projectilePrefab;
+    //public ParticleSystem projectilParticle;
+    //public ParticleSystem damageParticle;
+    //public AudioClip projectileSound;
+    //public AudioClip damageSound;
+    //public AudioClip powerupSound;
+
 
     void Start() {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,9 +54,13 @@ public class PlayerController : MonoBehaviour
             // launch projectile from player
             if (Input.GetKeyDown(KeyCode.Space) && cooldown <= 0) {
                 Instantiate(projectilePrefab, transform.position + offset, projectilePrefab.transform.rotation);
+                
+                // set cooldown
                 cooldown = CalculateCooldown();
-                // TODO particle system here
-                // TODO sound here
+                
+                // audio and particles
+                //projectilParticle.Play();
+                //playerAudio.PlayOneShot(projectileSound, 1.0f);
             }
 
             // reset cooldown
@@ -60,14 +73,28 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.back * horizontalInput * Time.deltaTime * speed, Space.World);
     }
 
+    // collision handler
     private void OnCollisionEnter(Collision other)
     {
         if (gameObject.CompareTag("Player")) {
             PlayerHazardCollision(GameManager.CalculateHealthLoss(other), other);
+            
+            
+            // only play damage effect when collision with non powerup
+            if (other.gameObject.CompareTag("Hazard") || other.gameObject.CompareTag("HazardMoving")) {
+                //damageParticle.Play();
+                //playerAudio.PlayOneShot(damageSound, 1.0f);
+            }
+            // if collide with instaDeath, deathSound will play instead (handled by gameManager)
+            if (other.gameObject.CompareTag("InstaDeath")) {
+                //damageParticle.Play();
+            }
         }
         
+        // when player collide with powerup
         if (other.gameObject.CompareTag("PowerUp")) {
             isPowerUp = true;
+            //playerAudio.PlayOneShot(powerupSound, 1.0f);
             Invoke("ResetPowerUp", 5.0f);
         }
     }
@@ -79,6 +106,7 @@ public class PlayerController : MonoBehaviour
         if (gameManager.getHealth() > 0) {
             Destroy(other.gameObject);
         }
+        // destory both player and object if health is below 0
         else {
             Destroy(gameObject);
             Destroy(other.gameObject);
@@ -97,7 +125,7 @@ public class PlayerController : MonoBehaviour
         return cooldown;
     }
 
-    // set powerUp status
+    // reset powerUp status
     public void ResetPowerUp() {
         isPowerUp = false;
     }

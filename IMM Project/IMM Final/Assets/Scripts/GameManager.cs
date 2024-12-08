@@ -17,20 +17,32 @@ public class GameManager : MonoBehaviour
     public List<GameObject> hazards;
     // hazard spawn range
     private float spawnRange = 10.0f;
+    // player object
+    public GameObject player;
+
     // HUD elements
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI titleText;
+    public Button restartButton;
+    public Button startButton;
+    public Button controlsButton;
+    public Button gitButton;
+
     // Manage health and score
     private int health = 50;
     private int score = 0;
     private float difficulty;
-    
+
+    // Game over sound
+    private AudioSource gameOverAudio;
+    // TODO ASSIGN public AudioClip gameOverSound;    
 
     // Start is called before the first frame update
     void Start()
     {
-        StartGame(); // TODO remove later, handled by button
+        gameOverAudio = GetComponent<AudioSource>();
     }
 
     public void StartGame() {
@@ -43,15 +55,35 @@ public class GameManager : MonoBehaviour
         // set starting health
         healthText.text = "Health: " + health;
 
+        // remove main menu UI
+        titleText.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
+        controlsButton.gameObject.SetActive(false);
+        gitButton.gameObject.SetActive(false);
+
+        // add game UI and player
+        healthText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        player.gameObject.SetActive(true);
+        
         // start the spawn manager
         StartCoroutine(SpawnManager());
     }
 
     public void EndGame() {
+        // set game as inactive
         isGameActive = false;
+
+        // play game over sound
+        // gameOverAudio.PlayOneShot(gameOverSound, 1.0f);
 
         // display game over text
         gameOverText.gameObject.SetActive(true);
+        // display restart button
+        restartButton.gameObject.SetActive(true);
+        // hide health
+        healthText.gameObject.SetActive(false);
+
     }
 
     public void RestartGame() {
@@ -61,6 +93,7 @@ public class GameManager : MonoBehaviour
     // spawn a random enemy from list every 1 seconds
     IEnumerator SpawnManager() {
         while (isGameActive) {
+            // difficulty decides spawn rate
             yield return new WaitForSeconds(calculateDifficulty(score));
             int index = Random.Range(0, hazards.Count);
              Instantiate(hazards[index], SpawnPosition(), hazards[index].transform.rotation);
@@ -152,6 +185,16 @@ public class GameManager : MonoBehaviour
         }
 
         return difficulty;
+    }
+
+    // method for github button on main menu
+    public void OpenGitHub() {
+        Application.OpenURL("https://github.com/ccoffinn/IMM-Project-Final");
+    }
+
+    // method for controls button on main menu
+    public void OpenControls(){
+
     }
 
     public int getHealth() {
