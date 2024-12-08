@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7697625252600238381}
   - component: {fileID: 4816834376169795614}
   - component: {fileID: 5030047695511491960}
-  - component: {fileID: 9041297502747495665}
   m_Layer: 0
   m_Name: MovingEnemy
   m_TagString: HazardMoving
@@ -120,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f7b0c3f63065a4ca9cb8948f30f25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 5
 --- !u!54 &5030047695511491960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,17 +147,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9041297502747495665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947041795738986258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef4c7f82cff2ed44bbdf3f7031a0a4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 15
-  gameManager: {fileID: 0}

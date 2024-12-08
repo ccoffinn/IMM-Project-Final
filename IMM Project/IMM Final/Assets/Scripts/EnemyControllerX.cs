@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EnemyControllerXt : MonoBehaviour
 {
-    public float moveSpeed = 15.0f; // Movement speed of the enemy
+    public float moveSpeed = 4.0f; // Movement speed of the enemy
     private Vector2 moveDown = new Vector2(-1,0); // move all enemies towards player
     private Vector3 moveLeft = new Vector3(0,0,2); // move moving hazards left
     private Vector3 moveRight = new Vector3(0,0,-2); // move moving hazards right
@@ -21,7 +21,7 @@ public class EnemyControllerXt : MonoBehaviour
     // Method to move enemy in the chosen direction
     IEnumerator MoveDownScreen() {
 
-        transform.Translate(moveDown * moveSpeed * Time.deltaTime);
+        transform.Translate(moveDown * moveSpeed * Time.deltaTime, Space.World);
 
         if (gameObject.CompareTag("HazardMoving")) {
             int index = Random.Range(0,2);
@@ -30,11 +30,11 @@ public class EnemyControllerXt : MonoBehaviour
             // move left or right randomly
             if (index == 0) {
                 yield return new WaitForSeconds(timeIndex);
-                transform.Translate(moveLeft * 6 * Time.deltaTime);
+                transform.Translate(moveLeft * 6 * Time.deltaTime, Space.World);
             }
             else if (index == 1) {
                 yield return new WaitForSeconds(timeIndex);
-                transform.Translate(moveRight * 6 * Time.deltaTime);
+                transform.Translate(moveRight * 6 * Time.deltaTime, Space.World);
             }
         }
     }

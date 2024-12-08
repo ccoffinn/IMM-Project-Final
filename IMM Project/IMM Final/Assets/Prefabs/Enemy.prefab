@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1466847670846944397}
   - component: {fileID: 8053592506582819656}
   - component: {fileID: 4013739575963450739}
-  - component: {fileID: -7859884279019349684}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Hazard
@@ -148,16 +147,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
---- !u!114 &-7859884279019349684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6662402918446883387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cec9c8cf3f33a4459faa74afe601b38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}

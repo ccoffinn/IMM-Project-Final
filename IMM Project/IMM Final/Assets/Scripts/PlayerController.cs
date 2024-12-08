@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private float cooldown = 0.5f;
     private Vector3 offset = new Vector3(1,0,0);
     public GameManager gameManager;
-    private int tempValue = 10; // placeholder value TODO replace with method to calculate 
 
     // declared in unity
     public GameObject projectilePrefab;
@@ -55,13 +54,13 @@ public class PlayerController : MonoBehaviour
 
             // move left or right
             horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.back * horizontalInput * Time.deltaTime * speed);
+            transform.Translate(Vector3.back * horizontalInput * Time.deltaTime * speed, Space.World);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (gameObject.CompareTag("Player")) {
-            PlayerHazardCollision(tempValue, other);
+            PlayerHazardCollision(GameManager.CalculateHealthLoss(other), other);
         }
     }
 
@@ -69,7 +68,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerHazardCollision(int healthLoss, Collision other) {
         gameManager.UpdateHealth(healthLoss);
         
-        if (gameManager.health > 0) {
+        if (gameManager.getHealth() > 0) {
             Destroy(other.gameObject);
         }
         else {
