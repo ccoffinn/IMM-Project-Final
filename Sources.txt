@@ -1,0 +1,47 @@
+Sources to all the sounds used in the project:
+
+Death sound: 
+Pixabay royalty free - Large Underwater Explosion by DavidDumaisAudio
+https://pixabay.com/sound-effects/large-underwater-explosion-190270/
+
+Game music: 
+Pixabay royalty free - Underwater by Gh0stly
+https://pixabay.com/music/future-bass-underwater-245900/
+
+Start game sound: 
+Pixabay royalty free - game start by freesound_Community
+https://pixabay.com/sound-effects/game-start-6104/
+
+Powerup sound: 
+Pixabay royalty free - achievement(Video game type 1) by RibhavAgrawal
+https://pixabay.com/sound-effects/achievement-video-game-type-1-230515/
+
+Hit sound: 
+Pixabay royalty free - pow by funmiya112
+https://pixabay.com/sound-effects/pow-90398/
+
+Shoot sound: 
+pixabay royalty free - Shooting Sound FX by lucadialessandro
+https://pixabay.com/sound-effects/shooting-sound-fx-159024/
+
+Damage sound: 
+pixabay royalty free - damage by freesound_community
+https://pixabay.com/sound-effects/shooting-sound-fx-159024/
+
+Links to all the assets used in the project:
+
+Background image:
+https://itch.io/queue/c/4018521/environment?game_id=2263922
+
+Enemy assets:
+https://assetstore.unity.com/packages/3d/characters/animals/fish/fish-polypack-202232
+
+Boat asset:
+https://assetstore.unity.com/packages/3d/vehicles/sea/stylized-pirate-ship-200192
+
+Particle effect(exported from Unity unit3):
+https://learn.unity.com/project/unit-3-sound-and-effects?uv=2022.3&courseId=5cf96c41edbc2a2ca6e8810f
+
+Power Up:
+https://assetstore.unity.com/packages/3d/props/pirate-coin-207743
+
