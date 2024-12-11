@@ -355,9 +355,7 @@
 "Assets/Scripts/DestroyOutOfBounds.cs"
 "Assets/Scripts/EnemyControllerX.cs"
 "Assets/Scripts/GameManager.cs"
-"Assets/Scripts/InstaDeath.cs"
 "Assets/Scripts/PlayerController.cs"
-"Assets/Scripts/PowerUp.cs"
 "Assets/Scripts/Projectile.cs"
 -langversion:9.0
 /deterministic

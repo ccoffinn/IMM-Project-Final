@@ -1,4 +1,4 @@
-// Sarah Scott & Gabriella SECOND NAME
+// Sarah Scott & Gabriela Stamatov
 
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public Button startButton;
     public Button controlsButton;
     public Button gitButton;
+    public Button mainMenuButton;
+    public Image titleBackground;
+    public RawImage controlsImage;
 
     // Manage health and score
     private int health = 50;
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour
     private float difficulty;
 
     // Game over sound
-    private AudioSource gameOverAudio;
+    public AudioSource gameOverAudio;
     public AudioClip gameOverSound;
     public AudioClip startSound;    
 
@@ -51,7 +54,7 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
 
         // play sound
-        gameOverAudio.PlayOneShot(startSound, 1.0f);
+        gameOverAudio.PlayOneShot(startSound, 1.5f);
         
         // set starting score
         UpdateScore(score);
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
         healthText.text = "Health: " + health;
 
         // remove main menu UI
+        titleBackground.gameObject.SetActive(false);
         titleText.gameObject.SetActive(false);
         startButton.gameObject.SetActive(false);
         controlsButton.gameObject.SetActive(false);
@@ -79,7 +83,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
 
         // play game over sound
-        gameOverAudio.PlayOneShot(gameOverSound, 1.0f);
+        gameOverAudio.PlayOneShot(gameOverSound, 1.5f);
 
         // display game over text
         gameOverText.gameObject.SetActive(true);
@@ -198,7 +202,16 @@ public class GameManager : MonoBehaviour
 
     // method for controls button on main menu
     public void OpenControls(){
+        // remove main menu UI
+        titleBackground.gameObject.SetActive(false);
+        titleText.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
+        controlsButton.gameObject.SetActive(false);
+        gitButton.gameObject.SetActive(false);
 
+        // display controls
+        controlsImage.gameObject.SetActive(true);
+        mainMenuButton.gameObject.SetActive(true);
     }
 
     public int getHealth() {

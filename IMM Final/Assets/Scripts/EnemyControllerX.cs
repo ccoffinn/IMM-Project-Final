@@ -1,4 +1,4 @@
-// Sarah Scott & Emmanuel SECOND NAME
+// Sarah Scott
 
 using System.Collections;
 using System.Collections.Generic;

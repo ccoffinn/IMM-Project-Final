@@ -1,4 +1,4 @@
-// Sarah Scott
+// Sarah Scott & Emmanuel Adenola
 
 using System.Collections;
 using System.Collections.Generic;
@@ -11,9 +11,9 @@ public class Projectile : MonoBehaviour
     private Vector3 direction = new Vector3(1,0,0);
     public GameManager gameManager;
     // audio and particle effects
-    private AudioSource projectileAudio;
+    public AudioSource projectileAudio;
     public AudioClip hitSound;
-    public ParticleSystem hitParticle;
+    
     
 
     void Start() {
@@ -33,8 +33,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.CompareTag("PowerUp" ) || other.gameObject.CompareTag("Hazard") || 
             other.gameObject.CompareTag("HazardMoving") || other.gameObject.CompareTag("InstaDeath")) {
             ProjectileHazardCollision(GameManager.CalculateScoreGain(other), other);
-            hitParticle.Play();
-            projectileAudio.PlayOneShot(hitSound, 1.0f);
+            projectileAudio.PlayOneShot(hitSound, 1.5f);
         }
     }
 

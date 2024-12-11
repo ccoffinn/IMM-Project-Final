@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public bool isPowerUp = false;
     // player audio
-    private AudioSource playerAudio;
+    public AudioSource playerAudio;
 
     // declared in unity
     public GameObject projectilePrefab;
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 
                 // audio and particles
                 projectilParticle.Play();
-                playerAudio.PlayOneShot(projectileSound, 1.0f);
+                playerAudio.PlayOneShot(projectileSound, 1.5f);
             }
 
             // reset cooldown
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
             // only play damage effect when collision with non powerup
             if (other.gameObject.CompareTag("Hazard") || other.gameObject.CompareTag("HazardMoving")) {
                 damageParticle.Play();
-                playerAudio.PlayOneShot(damageSound, 1.0f);
+                playerAudio.PlayOneShot(damageSound, 1.5f);
             }
             // if collide with instaDeath, deathSound will play instead (handled by gameManager)
             if (other.gameObject.CompareTag("InstaDeath")) {
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         // when player collide with powerup
         if (other.gameObject.CompareTag("PowerUp")) {
             isPowerUp = true;
-            playerAudio.PlayOneShot(powerupSound, 1.0f);
+            playerAudio.PlayOneShot(powerupSound, 1.5f);
             Invoke("ResetPowerUp", 5.0f);
         }
     }

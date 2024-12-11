@@ -1,4 +1,4 @@
-// Sarah Scott
+// Sarah Scott & Emmanuel Adenola
 
 using System.Collections;
 using System.Collections.Generic;
